@@ -7,17 +7,12 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type EmailStruct struct {
-	Email string
-}
-
 func Signup(c echo.Context) error {
 	if c.Request().Method == "POST" {
-		Email := c.Request().FormValue("email")
+		email := c.Request().FormValue("email")
 		// tools.SendEmail(email)
-		emailData := EmailStruct{Email: Email}
-		// emailData
-		// fmt.Println(email)
+		// time.Sleep(time.Duration(12334833939338849))
+		var emailData = struct{ Email string }{Email: email}
 		return c.Render(http.StatusOK, "confirm_email.html", emailData)
 	}
 
@@ -34,5 +29,8 @@ func CompleteSignUp(c echo.Context) error {
 }
 
 func Login(c echo.Context) error {
-	return nil
+	username := c.Request().FormValue("username")
+	password := c.Request().FormValue("password")
+	fmt.Println(username, password)
+	return c.Render(http.StatusOK, "signup.html", nil)
 }
