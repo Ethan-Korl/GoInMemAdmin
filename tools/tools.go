@@ -2,12 +2,13 @@ package tools
 
 import (
 	"fmt"
+	"goinmemoryadmin/configs"
 	"net/smtp"
 )
 
 func SendEmail(email string, msg string) {
-	from := ""
-	password := ""
+	from := configs.Email
+	password := configs.EmailPassword
 	to := []string{email}
 	smtpHost := "smtp.gmail.com"
 	smtpPort := "587"

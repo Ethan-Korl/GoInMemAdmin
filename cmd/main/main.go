@@ -16,6 +16,7 @@ func main() {
 
 	app.Use(middleware.Logger())
 
+	app.Static("/static", "public/static/")
 	app.Renderer = configs.NewTemplate()
 
 	routes.InitCoreRouter(app)
